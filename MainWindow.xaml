@@ -17,43 +17,41 @@
                 <DockPanel  Grid.Column="0" >
                     <DockPanel DockPanel.Dock="Top">
                         <Label Margin="5" DockPanel.Dock="Left">A:</Label>
-                        <Slider Name="A" Width="300" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" Value="{Binding Path=SeclectedColor.A}"></Slider>
+                        <Slider Name="A" Width="300" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" Value="{Binding Path=SelectedColor.A}"></Slider>
                         <Label Name="LbA" DockPanel.Dock="Right" Content="{Binding ElementName=A,Path=Value, Mode=OneWay}"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
                         <Label Margin="5" DockPanel.Dock="Left">R:</Label>
-                        <Slider Name="R" Width="300" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" Value="{Binding Path=SeclectedColor.R}"></Slider>
+                        <Slider Name="R" Width="300" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" Value="{Binding Path=SelectedColor.R}"></Slider>
                         <Label Name="LbR" DockPanel.Dock="Right" Content="{Binding ElementName=R,Path=Value, Mode=OneWay}"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
                         <Label Margin="5" DockPanel.Dock="Left">G:</Label>
-                        <Slider Name="G" Width="300" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" Value="{Binding Path=SeclectedColor.G}"></Slider>
+                        <Slider Name="G" Width="300" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" Value="{Binding Path=SelectedColor.G}"></Slider>
                         <Label Name="LbG" DockPanel.Dock="Right" Content="{Binding ElementName=G,Path=Value, Mode=OneWay}"/>
 
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
                         <Label Margin="5" DockPanel.Dock="Left">B:</Label>
-                        <Slider Name="B" Width="300" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" Value="{Binding Path=SeclectedColor.B}"></Slider>
+                        <Slider Name="B" Width="300" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" Value="{Binding Path=SelectedColor.B}"></Slider>
                         <Label Name="LbB" DockPanel.Dock="Right" Content="{Binding ElementName=B,Path=Value, Mode=OneWay}"/>
                     </DockPanel>
                 </DockPanel>
-                <Border Name="Picture" Grid.Column="1" BorderThickness="4,4" BorderBrush="Black" CornerRadius="8,8,3,4"  >
-                    <Border.Background>
-                        <SolidColorBrush Color="{Binding Path=SeclectedColor.Color}"></SolidColorBrush>
-                    </Border.Background>
+                <Border Name="Picture" Grid.Column="1" BorderThickness="4,4" BorderBrush="Black" CornerRadius="8,8,3,4" Background="{Binding Path=SelectedColor.Color}"  >
+                   
                 </Border>
             </Grid>
         </DockPanel>
         <DockPanel Margin="10" Height="50" LastChildFill="False">
-            <Button Name="Add" BorderThickness="4,4" BorderBrush="Black" DockPanel.Dock="Left" Width="100" Margin="0,0,0,-0.4" Height="50" VerticalAlignment="Top" Click="Add_Click" >Add</Button>
+            <Button Name="Add" BorderThickness="4,4" BorderBrush="Black" DockPanel.Dock="Left" Width="100" Height="50" VerticalAlignment="Top" Click="Add_Click" >Add</Button>
             <Button Name="Remove" BorderThickness="4,4" BorderBrush="Black" DockPanel.Dock="Right" Width="100" Click="Remove_Click">Remove</Button>
         </DockPanel>
         <DockPanel>
 
                      
-            <ListBox Name="colorsList"  Height="50"
-                     ItemsSource="{Binding Path=collection}"
-                     SelectedItem="{Binding Path=SeclectedColor, Mode=OneWayToSource}"
+            <ListBox Name="colorsList"  
+                     ItemsSource="{Binding Path=ColorARGBs}"
+                     SelectedItem="{Binding Path=SelectedColor, Mode=OneWayToSource}"
                      >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -62,11 +60,8 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="500"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" FontSize="22" Text="{Binding Path=SeclectedColor.Color}"></TextBlock>
-                            <Border Grid.Column="1" Margin="5" BorderThickness="4,4" BorderBrush="Black" CornerRadius="10">
-                                <Border.Background>
-                                    <SolidColorBrush Color="{Binding Path=SeclectedColor.Color}"></SolidColorBrush>
-                                </Border.Background>
+                            <TextBlock Grid.Column="0" FontSize="22" Text="{Binding Path=SelectedColor.Color}" Height="40" Width="40"></TextBlock>
+                            <Border Grid.Column="1" Margin="5" BorderThickness="4,4" BorderBrush="Black" CornerRadius="10" Background="{Binding Path=SelectedColor.Color}">
                             </Border>
                         </Grid>
                     </DataTemplate>

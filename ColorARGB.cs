@@ -3,60 +3,60 @@ namespace Argb_Slider_bindings
 {
     public class ColorARGB : INotifyPropertyChanged
     {
-        public byte A;
-        public byte R { get; set; }
-        public byte G { get; set; }
-        public byte B { get; set; }
+        private byte a;
+        private byte r;
+        private byte g { get; set; }
+        private byte b { get; set; }
         public string Color => System.Windows.Media.Color.FromArgb(A, R, G, B).ToString();
 
         
-        public byte _A
+        public byte A
         {
-            get => A;
+            get => a;
             set
             {
-                if (A != value)
+                if (a != value)
                 {
-                    A = value;
+                    a = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(A)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Color)));
                 }
             }
         }
-        public byte _R
+        public byte R
         {
-            get => R;
+            get => r;
             set
             {
-                if (R != value)
+                if (r != value)
                 {
-                    R = value;
+                    r = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(R)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Color)));
                 }
             }
         }
-        public byte _G
+        public byte G
         {
-            get => G;
+            get => g;
             set
             {
-                if (G != value)
+                if (g != value)
                 {
-                    R = value;
+                    g = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(G)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Color)));
                 }
             }
         }
-        public byte _B
+        public byte B
         {
-            get => B;
+            get => b;
             set
             {
-                if (B != value)
+                if (b != value)
                 {
-                    B = value;
+                    b = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(B)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Color)));
                 }
